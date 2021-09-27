@@ -7,7 +7,7 @@
 export const pick = (obj, ...fields) => {
   const resObj = {};
   Object.entries(obj).forEach(([key, value]) =>{
-    if (fields.indexOf(key) !== -1) {
+    if (fields.includes(key)) {
       resObj[key] = value;
     }
   }
