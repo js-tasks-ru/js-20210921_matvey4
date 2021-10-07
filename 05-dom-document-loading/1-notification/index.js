@@ -1,8 +1,7 @@
 export default class NotificationMessage {
   static activeNotification;
 
-  constructor(msg, {duration = 2000,
-    type = 'success'} = {}) {
+  constructor(msg, {duration = 0, type = ''} = {}) {
     this.msg = msg;
     this.duration = duration;
     this.type = type;
@@ -43,7 +42,6 @@ export default class NotificationMessage {
 
   destroy() {
     this.remove();
-    // NOTE: удаляем обработчики событий, если они есть
   }
 
 }
