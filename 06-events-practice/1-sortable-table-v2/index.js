@@ -3,12 +3,7 @@ export default class SortableTable {
   onClickSort = (event) => {
     const column = event.target.closest('[data-sortable = "true"]');
     if (column) {
-      if (column.dataset.order === 'asc') {
-        column.dataset.order = 'desc';
-      } else {
-        column.dataset.order = 'asc';
-      }
-
+      column.dataset.order = column.dataset.order === 'asc' ? 'desc' : 'asc';
       const sortedData = this.sortData(column.dataset.id, column.dataset.order);
       if (!column.querySelector('.sortable-table__sort-arrow')) {
         column.append(this.subElements.arrow);
