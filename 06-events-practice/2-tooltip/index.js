@@ -29,12 +29,11 @@ class Tooltip {
   }
 
   render(text) {
-    this.element = this.getTemplate(text);
-    document.body.append(this.element);
-  }
+    this.element = document.createElement('div');
+    this.element.classList.add('tooltip');
+    this.element.innerHTML = text;
 
-  getTemplate(text) {
-    return `<div class="tooltip">${text}</div>`;
+    document.body.append(this.element);
   }
 
   initialize() {
@@ -59,15 +58,14 @@ class Tooltip {
       this.element = null;
     }
   }
-
   removeEventListeners() {
     document.removeEventListener('pointerover', this.onPointerOver);
     document.removeEventListener('pointerout', this.onPointerOut);
   }
 
   destroy() {
-    this.removeEventListeners();
     this.remove();
+    this.removeEventListeners();
   }
 }
 
