@@ -42,11 +42,11 @@ export default class SortableTable {
 
   getTableHeaders() {
     return `<div data-element="header" class="sortable-table__header sortable-table__row">
-                ${this.getHeaderRows()}
+                ${this.getHeaderCells()}
             </div>`;
   }
 
-  getHeaderRows() {
+  getHeaderCells() {
     return this.headerConfig.map(header =>{
       const order = this.sorted.id === header.id ? this.sorted.order : 'asc';
       return `<div class="sortable-table__cell" data-id=${header.id} data-sortable=${header.sortable} data-order=${order}>
@@ -132,5 +132,6 @@ export default class SortableTable {
 
   destroy() {
     this.remove();
+    this.subElements.header.removeEventListener('pointerdown', this.onClickSort);
   }
 }
