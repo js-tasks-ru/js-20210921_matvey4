@@ -1,5 +1,5 @@
 import fetchJson from './utils/fetch-json.js';
-const BACKEND_URL = 'https://course-js.javascript.ru/';
+const BACKEND_URL = 'https://course-js.javascript.ru';
 
 export default class SortableTable {
   start = 0
@@ -51,7 +51,7 @@ export default class SortableTable {
     this.headerConfig = headerConfig;
     this.data = data;
     this.sorted = sorted;
-    this.url = new URL(BACKEND_URL + url);
+    this.url = new URL(url, BACKEND_URL);
     this.isSortLocally = isSortLocally;
     this.render();
 
@@ -217,13 +217,13 @@ export default class SortableTable {
   remove () {
     if (this.element) {
       this.element.remove();
-      document.removeEventListener('scroll', this.onScroll);
     }
   }
 
   destroy() {
     this.remove();
-    this.subElements.header.removeEventListener('pointerdown', this.onClickSort);
+    this.element = null;
+    document.removeEventListener('scroll', this.onScroll);
   }
 
 
