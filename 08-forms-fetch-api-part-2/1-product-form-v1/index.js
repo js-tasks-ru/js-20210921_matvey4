@@ -129,12 +129,10 @@ export default class ProductForm {
     const [categoriesData, productResponse] = await Promise.all([categoriesPromise, productPromise]);
 
     [this.productData] = productResponse;
-
-    this.formData = this.productData;
     this.categories = categoriesData;
 
     const element = document.createElement('div');
-    element.innerHTML = this.formData
+    element.innerHTML = this.productData
       ? this.getTemplate()
       : this.getEmptyTemplate();
 
@@ -199,7 +197,7 @@ export default class ProductForm {
     fields.forEach(item => {
       const element = productForm.querySelector(`#${item}`);
 
-      element.value = this.formData[item] || this.productDefaultData[item];
+      element.value = this.productData[item] || this.productDefaultData[item];
     });
   }
 
