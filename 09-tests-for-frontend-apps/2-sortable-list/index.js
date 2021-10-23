@@ -48,13 +48,6 @@ export default class SortableList {
     if (nextElem && !this.isAbove(event.clientY, nextElem)) {
       return nextElem.after(this.placeHolder);
     }
-
-
-
-
-
-
-
   }
 
 
@@ -93,7 +86,6 @@ export default class SortableList {
   dragStart(element, {clientX, clientY}) {
     this.draggingElement = element;
 
-    //this.draggingElement.style.position = 'fixed';
     element.style.height = `${element.offsetHeight}px`;
     element.style.width = `${element.offsetWidth}px`;
 
@@ -106,7 +98,7 @@ export default class SortableList {
     element.classList.add('sortable-list__item_dragging');
     element.before(this.placeHolder);
     this.element.append(element);
-    //this.moveAt(clientX, clientY);
+    this.moveAt(clientX, clientY);
     this.addEventListeners();
   }
 
