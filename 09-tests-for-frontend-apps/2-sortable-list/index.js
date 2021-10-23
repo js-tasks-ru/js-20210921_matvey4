@@ -23,13 +23,8 @@ export default class SortableList {
 
   onPointerMove = (event) => {
 
-    let { firstElementChild, lastElementChild } = this.element;
-    if (firstElementChild === this.draggingElement) {
-      firstElementChild = firstElementChild.nextElementSibling;
-    }
-    if (lastElementChild === this.draggingElement) {
-      lastElementChild = lastElementChild.previousElementSibling;
-    }
+    const { firstElementChild, lastElementChild } = this.element;
+
     this.moveAt(event.clientX, event.clientY);
     const prevElem = this.placeHolder.previousElementSibling;
     const nextElem = this.placeHolder.nextElementSibling;
