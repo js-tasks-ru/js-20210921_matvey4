@@ -6,10 +6,8 @@ const IMGUR_CLIENT_ID = '28aaa2e823b03b1';
 const BACKEND_URL = 'https://course-js.javascript.ru';
 
 export default class ProductForm {
-  productPath = 'api/rest/products'
-  productUrl = new URL(this.productPath, BACKEND_URL);
-  categoriesPath = 'api/rest/categories'
-  categoriesUrl = new URL(this.categoriesPath, BACKEND_URL);
+  productUrl = new URL('api/rest/products', BACKEND_URL);
+  categoriesUrl = new URL('api/rest/categories', BACKEND_URL);
   productData;
   categories;
 
