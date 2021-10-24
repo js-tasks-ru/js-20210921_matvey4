@@ -15,8 +15,6 @@ export default class Page {
   ordersChartUrl = 'api/dashboard/orders';
   salesChartUrl = 'api/dashboard/sales';
   customersChartUrl = 'api/dashboard/customers';
-  sortableTableStart = 0;
-  sortableTableEnd = 30;
 
   initComponents() {
     const dateTo = new Date();
@@ -84,7 +82,6 @@ export default class Page {
 
     const [data] = await Promise.all([dataPromise, ordersPromise, salesPromise, customersPromise]);
 
-    //const data = response[0];
     this.components.sortableTable.addRows(data);
 
   }
@@ -101,6 +98,7 @@ export default class Page {
         this.subElements[component].append(this.components[component].element);
       }
     });
+
     this.addEventListeners();
     return this.element;
   }
